@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
   <head>
     <title>FasionTemplate</title>
     <%= csrf_meta_tags %>
@@ -10,6 +10,14 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
   </body>
 </html>
