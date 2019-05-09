@@ -10,11 +10,11 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
+    @product = current_user.product.build
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = current_user.product.build(product_params)
 
     if @product.save
       redirect_to root_path
