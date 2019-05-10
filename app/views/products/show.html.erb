@@ -1,14 +1,14 @@
 <h1>Show Page</h1>
 
-<h2><%= @product.title %></h2>
+<h3><%= @product.title %></h3>
 <h4><%= @product.category.name %></h4>
 <p><%= @product.description %></p>
 
-<%# <div class="links btn-group"> %>
+<div class="btn-group btn-group-toggle">
   <% if user_signed_in? %>
     <% if @product.user_id == current_user.id %>
-      <%= link_to 'Edit', edit_product_path %>
-      <%= link_to 'Delete', product_path, method: :delete, data: { confirm: 'Are You Sure?' } %>
+      <%= link_to 'Edit', edit_product_path, class: 'btn btn-outline-secondary' %>
+      <%= link_to 'Delete', product_path, method: :delete, data: { confirm: 'Are You Sure?' }, class: 'btn btn-outline-secondary' %>
     <% end %>
   <% end %>
-<%# </div> %>
+</div>

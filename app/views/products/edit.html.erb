@@ -1,3 +1,8 @@
 <h1>Edit Page</h1>
 
-<%= render 'form' %>
+<%= simple_form_for @product, html: {multipart: true} do |f| %>
+  <%= f.select :category_id, @categories, {}, { class: 'btn btn-outline-secondary' } %>
+  <%= f.input :title, label: 'Product Title' %>
+  <%= f.input :description %>
+  <%= f.button :submit, class: 'btn btn-outline-secondary' %>
+<% end %>
