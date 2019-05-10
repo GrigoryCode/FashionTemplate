@@ -7,7 +7,7 @@
 <% else %>
   <div class="row">
     <% @products.each do |product| %>
-      <div class="col-md-6">
+      <div class="col-md-3">
         <a href="/products/<%= product.id %>">
           <%= image_tag product.product_img.url(:product_index), class: "product" %>
         </a>
