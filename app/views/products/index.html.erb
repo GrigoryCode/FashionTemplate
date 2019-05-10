@@ -1,7 +1,16 @@
 <h1>Index Page</h1>
 
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Категория
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <% Category.all.each do |category| %>
+      <%= link_to category.name, products_path(category: category.name), class: "dropdown-item" %>
+    <% end %>
+  </div>
+</div>
 <h2><%= params[:category] %></h2>
-
 <% if @products.count == 0 %>
   <h3>Нет продуктов в данной категории</h3>
 <% else %>
@@ -9,7 +18,7 @@
     <% @products.each do |product| %>
       <div class="col-md-3">
         <a href="/products/<%= product.id %>">
-          <%= image_tag product.product_img.url(:product_index), class: "product" %>
+          <%= image_tag product.product_img.url, class: "product-img" %>
         </a>
         <h3><%= link_to product.title, product_path(product) %></h3>
       </div>
