@@ -11,10 +11,12 @@ class ProductsController < ApplicationController
 
   def new
     @product = current_user.products.build
+    @categories = Category.all.map{ |c| [c.name, c.id] }
   end
 
   def create
     @product = current_user.products.build(product_params)
+    @product.category_id = params[:category_id]
 
     if @product.save
       redirect_to root_path
@@ -24,9 +26,12 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @categories = Category.all.map{ |c| [c.name, c.id] }
   end
 
   def update
+    @product.category_id = params[:category_id]
+    
     if @product.update(product_params)
       redirect_to product_path(@product)
     else
@@ -42,7 +47,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description)
+    params.require(:product).permit(:title, :description, :category_id)
   end
 
   def find_product
